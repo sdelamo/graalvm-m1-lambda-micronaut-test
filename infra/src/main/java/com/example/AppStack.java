@@ -8,6 +8,7 @@ import software.amazon.awscdk.CfnOutput;
 import software.amazon.awscdk.Duration;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
+import software.amazon.awscdk.services.lambda.Architecture;
 import software.amazon.awscdk.services.lambda.FunctionUrl;
 import software.amazon.awscdk.services.lambda.FunctionUrlAuthType;
 import software.amazon.awscdk.services.lambda.FunctionUrlOptions;
@@ -40,6 +41,7 @@ public class AppStack extends Stack {
                 .memorySize(512)
                 .tracing(Tracing.ACTIVE)
                 .logRetention(RetentionDays.ONE_WEEK)
+                .architecture(Architecture.ARM_64)
                 .build();
         FunctionUrl functionUrl = function.addFunctionUrl(FunctionUrlOptions.builder()
                 .authType(FunctionUrlAuthType.NONE)
